@@ -21,14 +21,14 @@ class RoyalMail extends Batch implements BatchInterface
         }
     }
 
-    /** @returns int */
+    /** @returns string */
     public function end()
     {
         if (count($this->consignments) > 0) {
             //send to FTP
-            return count($this->consignments);
+            return "FTP";
         } else {
-            return -1;
+            return "NONE TO SEND";
         }
     }
 }

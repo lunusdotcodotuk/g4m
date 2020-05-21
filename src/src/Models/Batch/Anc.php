@@ -6,7 +6,7 @@ use Exception;
 use G4M\Models\Consignment\Consignment;
 use G4M\Models\Courier;
 
-class RoyalMail extends Batch implements BatchInterface
+class Anc extends Batch implements BatchInterface
 {
     /**
      * @param Consignment $consignment
@@ -14,7 +14,7 @@ class RoyalMail extends Batch implements BatchInterface
      */
     public function addConsignment(Consignment $consignment)
     {
-        if ($consignment->getType() === Courier::ROYAL_MAIL) {
+        if ($consignment->getType() === Courier::ANC) {
             $this->consignments[] = $consignment;
         } else {
             throw new Exception('Consignment of wrong type');
@@ -25,8 +25,8 @@ class RoyalMail extends Batch implements BatchInterface
     public function end()
     {
         if (count($this->consignments) > 0) {
-            //send to FTP
-            return "FTP";
+            //send to EMAIL
+            return "EMAIL";
         } else {
             return "NONE TO SEND";
         }
