@@ -4,6 +4,7 @@ namespace G4M\Models\Batch;
 
 use DateTime;
 
+/** Standard model for Batch, with default class member vars */
 abstract class Batch
 {
     protected DateTime $date;
