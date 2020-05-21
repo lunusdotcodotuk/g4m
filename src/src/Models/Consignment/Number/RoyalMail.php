@@ -2,32 +2,12 @@
 
 namespace G4M\Models\Consignment\Number;
 
-class RoyalMail
+class RoyalMail extends Number implements NumberInterface
 {
     const PATTERN = "/^[A-Z]{2}[0-9]{6}$/";
 
-    function generateTwoRandomLetters() {
-        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < 2; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $randomString;
-    }
-
-    function generateSixRandomNumbers() {
-        $characters = '0123456789';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < 6; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $randomString;
-    }
-
     public function generate()
     {
-        return $this->generateTwoRandomLetters() . $this->generateSixRandomNumbers();
+        return $this->generateRandomLetters(2) . $this->generateRandomNumbers(6);
     }
 }
